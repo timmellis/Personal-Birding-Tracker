@@ -1,5 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import { Routes, Route} from 'react-router-dom'
 
 // NEEDED FOR USECONTEXT
 import {useState, useContext} from 'react' 
@@ -8,6 +10,8 @@ import DataContext from './DataContext'
 // import ComponentB from './ComponentB';
 
 import Nav from './components/Nav'
+import Main from './pages/Main'
+import ExploreBirds from './pages/ExploreBirds'
 
 function App() {
 
@@ -30,11 +34,16 @@ function App() {
       </header>
 
       <h1>Personal Birding Tracker</h1>
+     
       {/* <DataContext.Provider value={{ userInfo, setUserInfo, moreInfo}}>
          <ComponentA />
         <ComponentB /> 
       </DataContext.Provider> */}
 
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/explore/birds' element={<ExploreBirds />} />
+      </Routes>
 
 
       
