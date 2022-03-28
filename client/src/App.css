@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+header {
+  height: min(150px, 20vh);
+  background-color: rgb(170, 204, 255);
+  position: relative;
+} 
+.navbar {
+  position: absolute;
+  width: 100vw;
+  bottom:5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.nav-btn {
+  padding: 8px;
+}
+.navbar > .nav-btn {
+  display:inline-block;
+  border: solid thin gray;
+  width:100%;
+  text-align: center;
+} 
+.navbar .nav-drop {
+  position: relative;
+  box-sizing: border-box;
+}
+.navbar .nav-drop-container {
+  box-sizing: border-box;
+  position: absolute;
+  top: -100%;
+
+  border:solid thin black;
+  width:100%;
+}
+
