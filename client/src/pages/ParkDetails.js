@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import BirdCard from '../components/BirdCard'
 
-const ExploreParks = (props) => {
+const ParkDetails = (props) => {
 
   let {id} = useParams()
   let navigate = useNavigate();
@@ -78,4 +78,4 @@ const ExploreParks = (props) => {
   }
 };
   
-export default ExploreParks;
+export default ParkDetails;

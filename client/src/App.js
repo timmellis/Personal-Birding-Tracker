@@ -16,6 +16,8 @@ import ExploreBirds from './pages/ExploreBirds'
 import ExploreParks from './pages/ExploreParks' 
 import ParkDetails from './pages/ParkDetails' 
 
+import UpdatePark from './pages/UpdatePark'
+
 function App() {
 
 
@@ -66,6 +68,8 @@ function App() {
             <Route path='/explore/parks' element={<ExploreParks />} />
             
             <Route path='/explore/parks/:id' element={<ParkDetails />} />
+
+            <Route path='/modify/parks/update/:id' element={<UpdatePark />} />
           </Routes>
         </DataContext.Provider>
 
