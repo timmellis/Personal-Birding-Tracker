@@ -77,18 +77,18 @@ router.delete('/parks/delete/:id',
       const {id} = req.params;
       if (!mongoose.Types.ObjectId.isValid(id)) throw Error (`Nope, that's not a valid MongoDB ObjectId string!`);
   
-      const thisPark = await Park.findByIdAndDelete(id, req.body);
-      if (thisPark) return res.status(200).send("deleted");
-      else throw Error (`Oops, failed to delete that entry.`);
-      // const thisPark = await Park.findByIdAndDelete(id, function (err, resp) {
-      //   if (err) {
-      //     console.error(`ERROR in Park.findByIdAndDelete`);
-      //     throw Error (`Hmm... There was a problem deleting that entry.`);
-      //   }
-      //   else {
-      //     // console.log("Deleted: ", resp);
-      //     res.send(`Successfully deleted entry: ${resp}`);
-      //   }});
+      // const thisPark = await Park.findByIdAndDelete(id, req.body);
+      // if (thisPark) return res.status(200).send("deleted");
+      // else throw Error (`Oops, failed to delete that entry.`);
+      const thisPark = await Park.findByIdAndDelete(id, function (err, resp) {
+        if (err) {
+          console.error(`ERROR in Park.findByIdAndDelete`);
+          throw Error (`Hmm... There was a problem deleting that entry.`);
+        }
+        else {
+          // console.log("Deleted: ", resp);
+          res.send(`Successfully deleted entry: ${resp}`);
+        }});
   
     } catch (e) {
       return res.send({ error: `This message: ${e.message}` })
