@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route, useParams} from 'react-router-dom'
 // import dotenv from 'dotenv'
 
 // NEEDED FOR USECONTEXT
@@ -59,18 +59,12 @@ function App() {
           <Nav />
         </header>
 
-        
-      
-        {/* <DataContext.Provider value={{ userInfo, setUserInfo, moreInfo}}>
-          <ComponentA />
-          <ComponentB /> 
-        </DataContext.Provider> */}
-
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds}}>
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/explore/birds' element={<ExploreBirds />} />
             <Route path='/explore/parks' element={<ExploreParks />} />
+            
             <Route path='/explore/parks/:id' element={<ParkDetails />} />
           </Routes>
         </DataContext.Provider>

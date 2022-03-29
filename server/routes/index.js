@@ -63,7 +63,7 @@ router.put('/parks/update/:id',
       let {name, location, address, gallery, img, description, notes } = req.body;     
       await Park.findByIdAndUpdate(id, req.body, {new: false})
 
-      res.send(`Successfully updated Park: ${name} <img src=${gallery[0].url} style="max-width:350px;" />${gallery[0].note}`);
+      res.json(req.body);
   
     } catch (e) {
       return res.send({ error: e.message })
@@ -128,6 +128,26 @@ router.get('/birds/:id',
   }
 )
 
+// UPDATE existing Bird (PUT)
+router.put('/birds/update/:id', 
+  async (req, res) => {
+    try {
+      const {id} = req.params;
+      if (!mongoose.Types.ObjectId.isValid(id)) throw Error (`Nope, that's not a valid MongoDB ObjectId string!`);
+  
+      const thisBird = await Bird.findById(id);
+      if (!thisBird) throw Error (`Oops, that park doesn't seem to exist.`);
+  
+      let {name, species_code, keywords, sightings, gallery, img, description, notes } = req.body;     
+      await Bird.findByIdAndUpdate(id, req.body, {new: false})
+
+      res.json(req.body);
+  
+    } catch (e) {
+      return res.send({ error: e.message })
+    }
+  }
+);
 
 
 

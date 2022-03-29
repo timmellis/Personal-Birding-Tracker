@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../DataContext'
 
-function ParkCard(props) {
+function BirdCard(props) {
 
   // const {parks} = useContext(DataContext);
-  
   const {name, location, address, description, 
-    notes, img, gallery} = props.park;
+    notes, img, gallery} = props.bird;
 
   return (
-    <div className="card-wrapper park-card-wrapper" style={{backgroundImage: `url(${img})`}} onClick={props.onClick}>
+    <div className="card-wrapper bird-card-wrapper" style={{backgroundImage: `url(${img})`}} onClick={props.onClick}>
       <div className="card-title">
         <h3>{name}</h3>
         <h5>{location}</h5>
@@ -18,4 +17,4 @@ function ParkCard(props) {
   );
 }
 
-export default ParkCard;
+export default BirdCard;
