@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from '../DataContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -6,9 +6,9 @@ import ParkCard from '../components/ParkCard'
 
 const ExploreParks = (props) => {
 
-  const {parks, birds} = useContext(DataContext);
   let navigate = useNavigate();
 
+  const {parks, birds} = useContext(DataContext);
 
   function showPark(id) {
     console.log(id);

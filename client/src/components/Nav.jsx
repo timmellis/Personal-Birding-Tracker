@@ -8,14 +8,14 @@ function Nav(props) {
       <div className='nav-btn'> About </div>
       <div className='nav-btn nav-drop'> Explore ▼
         <div className='nav-drop-container'>
-          <div className='nav-btn nav-drop-btn'><Link to='explore/birds'>Birds</Link></div>
-          <div className='nav-btn nav-drop-btn'><Link to='explore/parks'>Parks & Hotspots</Link></div>
+        <Link to='explore/birds'><div className='nav-btn nav-drop-btn'>Birds</div></Link>
+          <Link to='explore/parks'><div className='nav-btn nav-drop-btn'>Parks & Hotspots</div></Link>
         </div>
       </div>
       <div className='nav-btn nav-drop'> Add ▼
         <div className='nav-drop-container'>
-          <div className='nav-btn nav-drop-btn'><Link to='birds/create'>Add a New Bird</Link></div>
-          <div className='nav-btn nav-drop-btn'><Link to='parks/create'>Add a New Park</Link></div>
+          <Link to='birds/create'><div className='nav-btn nav-drop-btn'>Add a New Bird</div></Link>
+          <Link to='parks/create'><div className='nav-btn nav-drop-btn'>Add a New Park</div></Link>
         </div>
       </div>
 

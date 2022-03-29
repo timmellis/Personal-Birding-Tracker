@@ -13,32 +13,49 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  z-index:10;
 }
 .nav-btn {
   padding: 8px;
   background: rgba(255,255,255,.4)
+}
+.nav-btn:hover {
+  background: rgba(122, 159, 214, 0.75);
+  font-weight:bold;
+  color: white;
 }
 .navbar > .nav-btn {
   display:inline-block;
   border: solid thin gray;
   width:100%;
   text-align: center;
+  z-index: 10;
 } 
-.navbar .nav-drop {
+.nav-drop {
   position: relative;
   box-sizing: border-box;
+  z-index:10;
 }
-.navbar .nav-drop-container {
+.nav-drop-container {
   box-sizing: border-box;
   position: absolute;
-  top: 100%;
+  top: 20%;
   left: 0;
   margin-top: 0px;
   border-top: 0;
   background:rgb(170, 204, 255);
 
-  border:solid thin black;
+  border:solid 2px gray;
+  border-top: solid thin gray;
   width:100%;
+  z-index: 0;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+.nav-drop:hover > .nav-drop-container {
+  display: block;
+  top:100%;
+  opacity: 1;
 }
 
 
