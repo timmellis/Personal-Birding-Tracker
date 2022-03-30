@@ -3,22 +3,18 @@ import { DataContext } from '../DataContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios, { Axios } from 'axios'
 
-const UpdatePark = (props) => {
+const CreatePark = (props) => {
 
   let {id} = useParams()
   let navigate = useNavigate();
 
-  const {apiBase} = useContext(DataContext);
+  const {apiBase, refreshParksAndBirds} = useContext(DataContext);
   const [thisPark, setThisPark] = useState(
     {
       "name": "",
       "location": "",
       "address": "",
       "gallery": [
-        {
-          "url": "",
-          "note": "",
-        },
         {
           "url": "",
           "note": "",
@@ -30,18 +26,18 @@ const UpdatePark = (props) => {
     }
   );
 
-  const getThisPark = async() => {
-    const park = await axios.get(`${apiBase}/parks/${id}`)
-    setThisPark(park.data);
-    // console.log(thisPark);
-  }
+  // const getThisPark = async() => {
+  //   const park = await axios.get(`${apiBase}/parks/${id}`)
+  //   setThisPark(park.data);
+  //   // console.log(thisPark);
+  // }
 
-  useEffect(() => {
-    getThisPark();
-  },[id])
+  // useEffect(() => {
+  //   getThisPark();
+  // },[id])
 
   const onChange = (e, objKey, i) => {
-    console.log(e, thisPark);
+    // console.log(e, thisPark);
     if (e.target.id === 'name') setThisPark({...thisPark, name: e.target.value});
     else if (e.target.id === 'location') setThisPark({...thisPark, location: e.target.value});
     else if (e.target.id === 'address') setThisPark({...thisPark, address: e.target.value});
@@ -73,12 +69,13 @@ const UpdatePark = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const updateUrl = `${apiBase}/parks/update/${id}`;
+    const createUrl = `${apiBase}/parks/create`;
         
-    await axios.put(updateUrl, thisPark)
+    await axios.post(createUrl, thisPark)
     .then(res => {
-      console.log(res);
-      navigate(`/explore/parks/${id}?status=upated`);
+      const id = res.data.newPark._id;
+      refreshParksAndBirds();
+      navigate(`/explore/parks/${id}`);
     })
   }
 
@@ -148,8 +145,8 @@ const UpdatePark = (props) => {
           </div>
 
           <div className='form-buttons'>
-            <button type='submit'>Update</button>
-            <button type='button' onClick={() => navigate(-1)}>Cancel</button>
+            <button type='submit'>Save</button>
+            <button type='button' onClick={() => navigate('/explore/parks')}>Cancel</button>
           </div>
 
         </form>
@@ -165,4 +162,4 @@ const UpdatePark = (props) => {
   }
 };
   
-export default UpdatePark;
+export default CreatePark;

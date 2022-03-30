@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from '../DataContext'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 
 import BirdCard from '../components/BirdCard'
@@ -10,7 +10,7 @@ const ParkDetails = (props) => {
   let {id} = useParams()
   let navigate = useNavigate();
 
-  const {apiBase, parks, birds} = useContext(DataContext);
+  const {apiBase, parks, birds, searchParams} = useContext(DataContext);
 
   const [thisPark, setThisPark] = useState({});
   const [thisParksBirds, setThisParksBirds] = useState(birds);
@@ -18,6 +18,7 @@ const ParkDetails = (props) => {
   useEffect(() => {
     getThisPark();
     filterBirds();
+    // console.log('PARK DETAILS SERCH PARAM:', searchParams);
   },[id])
 
   const getThisPark = async() => {
@@ -47,6 +48,9 @@ const ParkDetails = (props) => {
           <h5>{thisPark.location}</h5>
         </div> 
         <div className='details-block'>
+          {/* {(searchParams) && <span>Saved</span>} */}
+          <button className='edit-details-link'><Link to={`/modify/parks/update/${id}`}> ✎ Edit details  </Link></button>
+          <button className='delete-link'><Link to={`/modify/parks/delete/${id}`}> <b>✗</b> Delete </Link></button>
           <p>Address: {thisPark.address}</p>
           <p>{thisPark.description}</p>
           <p>Notes:<br /> {thisPark.notes}</p>
@@ -54,15 +58,15 @@ const ParkDetails = (props) => {
         <h3>Seen at this location:</h3>
         <div className='cards-grid secondary-grid'>
         {thisParksBirds.map((bird, i) => (  
-          <div className='secondary-grid-card-block'>
+          <div key={i} className='secondary-grid-card-block'>
             <BirdCard key={i} bird={bird} onClick={() => showBird(bird._id)} />
-            <p className='sighting-notes'>Notes: 
+            <div className='sighting-notes'>Notes: 
             {
               bird.sightings.filter(sght => sght.park_id === id)
-              .map((s) => (
-                <div>
+              .map((s, i) => (
+                <div key={i}>
                   <span className='timestamp'>{Date(s.timestamp)}:</span><br /><span className='sighting-note-text'>{s.notes}</span></div>))
-            } </p>
+            } </div>
           </div>
         ))}
         </div>

@@ -1,14 +1,12 @@
 // import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-import { Routes, Route, useParams} from 'react-router-dom'
+import { Routes, Route, useParams, useSearchParams} from 'react-router-dom'
 // import dotenv from 'dotenv'
 
 // NEEDED FOR USECONTEXT
 import {useState, useContext, useEffect} from 'react' 
 import DataContext from './DataContext'
-// import ComponentA from './ComponentA';
-// import ComponentB from './ComponentB';
 
 import Nav from './components/Nav'
 import Main from './pages/Main'
@@ -17,6 +15,8 @@ import ExploreParks from './pages/ExploreParks'
 import ParkDetails from './pages/ParkDetails' 
 
 import UpdatePark from './pages/UpdatePark'
+import CreatePark from './pages/CreatePark'
+import DeletePark from './pages/DeletePark'
 
 function App() {
 
@@ -29,8 +29,9 @@ function App() {
 
   const [parks, setParks] = useState([]);
   const [birds, setBirds] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const getParksAndBirds = async() => {
+  const refreshParksAndBirds = async() => {
     const allParks = await axios.get(`${base}/parks`)
     const allBirds = await axios.get(`${base}/birds`)
 //    console.log("getParks, allParks:", allParks.data);
@@ -41,9 +42,10 @@ function App() {
     console.log("UseEffect Birds: ", birds);
   }
 
+
   useEffect(() => {
-    getParksAndBirds();
-  },[])
+    refreshParksAndBirds();
+  },[searchParams])
 
   // const [userInfo, setUserInfo] = useState(
   //   { name: 'Tim', favColor: 'blue', favFood: 'dumplings' }
@@ -61,7 +63,7 @@ function App() {
           <Nav />
         </header>
 
-        <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds}}>
+        <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/explore/birds' element={<ExploreBirds />} />
@@ -70,6 +72,8 @@ function App() {
             <Route path='/explore/parks/:id' element={<ParkDetails />} />
 
             <Route path='/modify/parks/update/:id' element={<UpdatePark />} />
+            <Route path='/modify/parks/delete/:id' element={<DeletePark />} />
+            <Route path='/modify/parks/create/' element={<CreatePark />} />
           </Routes>
         </DataContext.Provider>
 
