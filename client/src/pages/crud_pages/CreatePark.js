@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { DataContext } from '../DataContext'
+import { DataContext } from '../../DataContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios, { Axios } from 'axios'
 

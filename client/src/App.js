@@ -14,9 +14,9 @@ import ExploreBirds from './pages/ExploreBirds'
 import ExploreParks from './pages/ExploreParks' 
 import ParkDetails from './pages/ParkDetails' 
 
-import UpdatePark from './pages/UpdatePark'
-import CreatePark from './pages/CreatePark'
-import DeletePark from './pages/DeletePark'
+import UpdatePark from './pages/crud_pages/UpdatePark'
+import CreatePark from './pages/crud_pages/CreatePark'
+import DeletePark from './pages/crud_pages/DeletePark'
 
 function App() {
 

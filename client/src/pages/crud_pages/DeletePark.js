@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { DataContext } from '../DataContext'
+import { DataContext } from '../../DataContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios, { Axios } from 'axios'
 
-const UpdatePark = (props) => {
+const DeletePark = (props) => {
 
   let {id} = useParams()
   let navigate = useNavigate();
@@ -41,7 +41,6 @@ const UpdatePark = (props) => {
   },[id])
 
   const onChange = (e, objKey, i) => {
-    console.log(e, thisPark);
     if (e.target.id === 'name') setThisPark({...thisPark, name: e.target.value});
     else if (e.target.id === 'location') setThisPark({...thisPark, location: e.target.value});
     else if (e.target.id === 'address') setThisPark({...thisPark, address: e.target.value});
@@ -73,13 +72,18 @@ const UpdatePark = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const updateUrl = `${apiBase}/parks/update/${id}`;
-        
-    await axios.put(updateUrl, thisPark)
-    .then(res => {
-      console.log(res);
-      navigate(`/explore/parks/${id}?status=upated`);
-    })
+    
+    if (window.confirm("Are you sure you want to delete this entry?") === true) { 
+      const deleteUrl = `${apiBase}/parks/delete/${id}`;
+       
+      await axios.delete(deleteUrl, thisPark)
+      .then(res => {
+        console.log(res);
+        navigate(`/explore/parks/?status=deleted`);
+     })
+    } else {
+      return null;
+    }
   }
 
   useEffect(() => {
@@ -89,31 +93,36 @@ const UpdatePark = (props) => {
   if (thisPark) {
     return (
       <div>
-        <h2>Update entry: {thisPark.name}</h2>
+        <h2>Delete entry: {thisPark.name}</h2>
         
         <div className='update-form-wrapper'>
         <form className='update-form' onSubmit={(e) => onSubmit(e)}>
+          
+          <div className='form-buttons'>
+            <button type='submit'><b>✗</b> DELETE</button>
+            <button type='button' onClick={() => navigate(-1)}>Cancel</button>
+          </div>
+
           <label htmlFor='name'>Name</label>
-          <input type='text' id='name' name='name' placeholder='Name of park or hotspot' value={thisPark.name} onChange={(e) => onChange(e)} />
+          <input type='text' id='name' name='name' placeholder='Name of park or hotspot' value={thisPark.name} disabled />
           
           <label htmlFor='location'>Location </label>
-          <input type='text' id='location' name='location' placeholder='location of park or hotspot' value={thisPark.location} onChange={(e) => onChange(e)} />
+          <input type='text' id='location' name='location' placeholder='location of park or hotspot' value={thisPark.location} disabled />
           
           <label htmlFor='address'>Address (for Maps) </label>
-          <input type='text' id='address' name='address' placeholder='Maps-able address of park' value={thisPark.address} onChange={(e) => onChange(e)} />
+          <input type='text' id='address' name='address' placeholder='Maps-able address of park' value={thisPark.address} disabled />
           
           <label htmlFor='img'>Main image URL </label>
-          <input type='text' id='img' name='img' placeholder='URL of image (not Instagram)' value={thisPark.img} onChange={(e) => onChange(e)} />
+          <input type='text' id='img' name='img' placeholder='URL of image (not Instagram)' value={thisPark.img} disabled />
           
           <label htmlFor='description'>Description </label>
-          <textarea rows='5' type='text' id='description' name='description' placeholder='Description' value={thisPark.description} onChange={(e) => onChange(e)}></textarea>
+          <textarea rows='5' type='text' id='description' name='description' placeholder='Description' value={thisPark.description} disabled></textarea>
           
           <label htmlFor='notes'>Notes </label>
-          <textarea rows='5' cols='50' id='notes' name='notes' placeholder='notes' value={thisPark.notes} onChange={(e) => onChange(e)}></textarea>
+          <textarea rows='5' cols='50' id='notes' name='notes' placeholder='notes' value={thisPark.notes} disabled></textarea>
 
           <div>
             <label htmlFor='gallery'>Gallery Images</label>
-            <button id='addOne' onClick={(e) =>galleryAdd(e)}>+ add</button>
           </div>
           <div>
 
@@ -131,25 +140,19 @@ const UpdatePark = (props) => {
               <div>
                 <label htmlFor={`gallery-img-url-${i}`}>Image URL </label>
                 
-                <input key={i} type='text' name='gallery' id={`gallery-img-url-${i}`} value={item.url} onChange={(e) => onChange(e, 'url', i)} />
+                <input key={i} type='text' name='gallery' id={`gallery-img-url-${i}`} value={item.url} disabled />
                 
                 <br />
                 
                 <label htmlFor={`gallery-img-caption-${i}`}>Caption </label>
                 
-                <input type='text' id={`gallery-img-note-${i}`} value={item.note} name='gallery' onChange={(e) => onChange(e, 'note', i)} />
+                <input type='text' id={`gallery-img-note-${i}`} value={item.note} name='gallery'  disabled />
               </div>
               
               <img src={item.url} width='100px;' alt='demo thumbnail' />
             </div>
           ))}
           
-
-          </div>
-
-          <div className='form-buttons'>
-            <button type='submit'>Update</button>
-            <button type='button' onClick={() => navigate(-1)}>Cancel</button>
           </div>
 
         </form>
@@ -165,4 +168,4 @@ const UpdatePark = (props) => {
   }
 };
   
-export default UpdatePark;
+export default DeletePark;
