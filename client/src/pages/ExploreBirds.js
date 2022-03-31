@@ -8,13 +8,13 @@ const ExploreBirds = (props) => {
 
   let navigate = useNavigate();
 
-  const {parks, birds} = useContext(DataContext);
+  const {birds} = useContext(DataContext);
 
   function showBird(id) {
     console.log(id);
     navigate(`${id}`);
   } 
-
+  console.log("CHECKMARK");
   if (birds.length) {
     return (
       <div>

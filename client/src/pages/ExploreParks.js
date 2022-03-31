@@ -19,7 +19,7 @@ const ExploreParks = (props) => {
     return (
       <div>
         <h2>Explore Parks page</h2>
-        
+
         <div className='cards-grid'>
         {parks.map((p, i) => (  
           <ParkCard key={i} park={p} onClick={() => showPark(p._id)} />

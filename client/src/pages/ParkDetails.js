@@ -60,7 +60,7 @@ const ParkDetails = (props) => {
               <button className='delete-link'><Link to={`/modify/parks/delete/${id}`}> <b>✗</b> Delete </Link></button>
               <p>Address: {thisPark.address}</p>
               <p>{thisPark.description}</p>
-              <p>Notes:<br /> {thisPark.notes}</p>
+              <p><span className='details-label'>Notes:</span><br /> {thisPark.notes}</p>
             </div>
             <h3>Sightings at this location:</h3>
             <div className='cards-grid secondary-grid'>

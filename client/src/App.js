@@ -19,7 +19,7 @@ import ExploreBirds from './pages/ExploreBirds'
 import BirdDetails from './pages/BirdDetails' 
 // import UpdateBird from './pages/crud_pages/UpdateBird'
 import CreateBird from './pages/crud_pages/CreateBird'
-// import DeleteBird from './pages/crud_pages/DeleteBird'
+import DeleteBird from './pages/crud_pages/DeleteBird'
 
 function App() {
 
@@ -75,6 +75,7 @@ function App() {
             <Route path='/explore/birds' element={<ExploreBirds />} />
             <Route path='/explore/birds/:id' element={<BirdDetails />} />
             <Route path='/modify/birds/create/' element={<CreateBird />} />
+            <Route path='/modify/birds/delete/:id' element={<DeleteBird />} />
 
           </Routes>
         </DataContext.Provider>

@@ -5,14 +5,13 @@ function ParkCard(props) {
 
   // const {parks} = useContext(DataContext);
   
-  const {name, location, address, description, 
-    notes, img, gallery} = props.park;
+  const {name, location, img} = props.park;
 
   return (
     <div className="card-wrapper park-card-wrapper" style={{backgroundImage: `url(${img})`}} onClick={props.onClick}>
       <div className="card-title">
         <h3>{name}</h3>
-        <h5>{location}</h5>
+        {/* <h5>{location}</h5> */}
       </div>
     </div>
   );

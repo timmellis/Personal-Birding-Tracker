@@ -69,8 +69,8 @@ const BirdDetails = (props) => {
               <button className='edit-details-link'><Link to={`/modify/birds/update/${id}`}> ✎ Edit details  </Link></button>
               <button className='delete-link'><Link to={`/modify/birds/delete/${id}`}> <b>✗</b> Delete </Link></button>
 
-              <p>{thisBird.description}</p>
-              <p>Notes:<br /> {thisBird.notes}</p>
+              <p>{!thisBird.description==="" ? thisBird.description : <span className='details-message'>To add a description. click 'edit details' above.</span>}</p>
+              <p><span className='details-label'>Notes:</span><br /> {!thisBird.notes==="" ? thisBird.notes : <span className='details-message'>No notes to display.</span>}</p>
             </div>
             <h3>Sightings:</h3>
             <div className='cards-grid secondary-grid'>

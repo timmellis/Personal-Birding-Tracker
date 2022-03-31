@@ -11,6 +11,8 @@ const CreateBird = (props) => {
 
   const {apiBase, refreshParksAndBirds, parks} = useContext(DataContext);
   
+
+
   const [timestampString, setTimestampString] = useState(
     `${new Date().getFullYear()}-01-01T00:00:00`);
 
@@ -34,16 +36,6 @@ const CreateBird = (props) => {
       "notes": " ",
     }
   );
-
-  // const getThisBird = async() => {
-  //   const bird = await axios.get(`${apiBase}/birds/${id}`)
-  //   setThisBird(bird.data);
-  //   // console.log(thisBird);
-  // }
-
-  // useEffect(() => {
-  //   getThisBird();
-  // },[id])
 
   const onChange = (e, objKey, i) => {
     // console.log(e, thisBird);
@@ -124,7 +116,7 @@ const CreateBird = (props) => {
   if (thisBird) {
     return (
       <div>
-        <h2>Create new entry: {thisBird.name}</h2>
+        <h2>Create new entry: "{thisBird.name}"</h2>
         
         <div className='update-form-wrapper'>
         <form className='update-form' onSubmit={(e) => onSubmit(e)}>
@@ -152,7 +144,7 @@ const CreateBird = (props) => {
 
 
           <div>
-            <label htmlFor='gallery'>Add a Sighting</label>
+            <label htmlFor='sightings'>Add a Sighting</label>
           </div>
           <div>
             <div className='form-gallery-line'>
@@ -167,7 +159,7 @@ const CreateBird = (props) => {
               <div className='form-sighting-line-inputs'>
                 
                 <select name='sightings' id='sighting-park_id' onChange={(e) => onChange(e, 'park_id', 0)}>
-                <option hidden disabled selected value> -- select a location -- </option>
+                <option name='prompt-option' selected disabled> -- select a location -- </option>
                   {parks.map((p) => (
                     <option key={p._id} value={p._id}>{p.name}</option>
                   ))}

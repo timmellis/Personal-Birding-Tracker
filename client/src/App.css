@@ -6,7 +6,7 @@ body {
 }
 header {
   height: min(150px, 20vh);
-  background-color: rgb(170, 204, 255);
+  background-color:skyblue;
   position: relative;
 } 
 header h1 {
@@ -75,6 +75,7 @@ header h1 {
 .page-title {
   margin: 10px 4px;
   padding: 10px;
+  background-color: lightskyblue;
   background-size: cover;
   background-position: center;
 }
@@ -83,7 +84,10 @@ header h1 {
   background: rgba(255,255,255,.5)
   
 }
-
+.details-page-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
 .details-content-wrapper {
   padding: 8px;
   display: grid;
@@ -103,7 +107,13 @@ header h1 {
   border: solid 2px black;
   float:left;
 }
-
+.details-label {
+  font-weight: bold;
+}
+.details-message {
+  color: gray;
+  font-style: italic;
+}
 
 .cards-grid {
   display: flex;
@@ -137,12 +147,27 @@ header h1 {
 .secondary-grid .card-wrapper {
   width:120px;
   max-height: 120px;
-} 
+}
+
+.bird-card-wrapper {
+  background: gray;
+  background-image: url('resources/bird-thumb.png');
+  background-size:cover;
+  background-position: center;
+
+}
+
+
 .card-wrapper:hover {
   transform: scale(1.05);
   box-shadow: 3px 1px 6px rgba(0,0,0,1);
   /* box-shadow: inset 0 0 8px white; */
 }
+.secondary-grid .card-wrapper:hover {
+  /* transform: scale(1.025); */
+  box-shadow:0 0 5px gray;
+}
+
 .card-wrapper .card-title {
   width:100%;
   background: rgba(0,0,0,.65);
@@ -168,6 +193,8 @@ header h1 {
   font-style: italic;
 }
 
+
+/* GALLERY COMPONENT STYLING */
 .gallery-component {
   border: solid 2px gray;
   padding: 4px;
@@ -177,6 +204,9 @@ header h1 {
 }
 .gallery-item img {
   width: 200px;
+  margin-bottom: -5px;
+  border: solid thin gray;
+  border-radius: 8px;
 } 
 .gallery-item-caption {
   margin:0;
@@ -246,4 +276,7 @@ header h1 {
   margin: 0 8px;
 } button[type='submit'] {
   font-weight:bold;
+}
+.delete-form-wrapper label {
+  color: gray;
 }
