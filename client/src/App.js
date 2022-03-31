@@ -63,7 +63,7 @@ function App() {
           <h1>Personal Birding Tracker</h1>
           <Nav />
         </header>
-        <div className='AppBody'>
+        <div className='App-Body'>
 
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>

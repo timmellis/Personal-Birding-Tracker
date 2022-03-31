@@ -1,9 +1,10 @@
 import React from 'react';
+import Search from '../components/Search';
 
 function Main(props) {
   return (
     <div>
-        This is the main page.
+        <Search />
     </div>
   );
 }

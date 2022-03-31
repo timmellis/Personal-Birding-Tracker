@@ -86,7 +86,7 @@ const CreatePark = (props) => {
   if (thisPark) {
     return (
       <div>
-        <h2>Create entry: "{thisPark.name}"</h2>
+        <h2>Create New Location: "{thisPark.name}"</h2>
         
         <div className='update-form-wrapper'>
         <form className='update-form' onSubmit={(e) => onSubmit(e)}>
