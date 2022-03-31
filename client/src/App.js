@@ -10,13 +10,16 @@ import DataContext from './DataContext'
 
 import Nav from './components/Nav'
 import Main from './pages/Main'
-import ExploreBirds from './pages/ExploreBirds'
 import ExploreParks from './pages/ExploreParks' 
 import ParkDetails from './pages/ParkDetails' 
-
 import UpdatePark from './pages/crud_pages/UpdatePark'
 import CreatePark from './pages/crud_pages/CreatePark'
 import DeletePark from './pages/crud_pages/DeletePark'
+import ExploreBirds from './pages/ExploreBirds'
+import BirdDetails from './pages/BirdDetails' 
+// import UpdateBird from './pages/crud_pages/UpdateBird'
+import CreateBird from './pages/crud_pages/CreateBird'
+// import DeleteBird from './pages/crud_pages/DeleteBird'
 
 function App() {
 
@@ -37,9 +40,6 @@ function App() {
 //    console.log("getParks, allParks:", allParks.data);
     setParks(allParks.data);
     setBirds(allBirds.data);  
-    
-    console.log("UseEffect parks:", parks);
-    console.log("UseEffect Birds: ", birds);
   }
 
 
@@ -66,14 +66,16 @@ function App() {
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/explore/birds' element={<ExploreBirds />} />
             <Route path='/explore/parks' element={<ExploreParks />} />
-            
             <Route path='/explore/parks/:id' element={<ParkDetails />} />
-
+            <Route path='/modify/parks/create/' element={<CreatePark />} />
             <Route path='/modify/parks/update/:id' element={<UpdatePark />} />
             <Route path='/modify/parks/delete/:id' element={<DeletePark />} />
-            <Route path='/modify/parks/create/' element={<CreatePark />} />
+
+            <Route path='/explore/birds' element={<ExploreBirds />} />
+            <Route path='/explore/birds/:id' element={<BirdDetails />} />
+            <Route path='/modify/birds/create/' element={<CreateBird />} />
+
           </Routes>
         </DataContext.Provider>
 

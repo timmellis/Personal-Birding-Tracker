@@ -45,7 +45,7 @@ const ParkDetails = (props) => {
     navigate(`/explore/birds/${id}`); 
   } 
 
-  if (parks.length) {
+  if (parks.length && thisPark.gallery) {
     return (
       <div className='details-page-wrapper'>
         <div className='page-title' style={{backgroundImage: `url(${thisPark.img})`}}>
@@ -62,25 +62,29 @@ const ParkDetails = (props) => {
               <p>{thisPark.description}</p>
               <p>Notes:<br /> {thisPark.notes}</p>
             </div>
-            <h3>Seen at this location:</h3>
+            <h3>Sightings at this location:</h3>
             <div className='cards-grid secondary-grid'>
             {thisParksBirds.map((bird, i) => (  
               <div key={i} className='secondary-grid-card-block'>
                 <BirdCard key={i} bird={bird} onClick={() => showBird(bird._id)} />
-                <div className='sighting-notes'>Notes: 
+                <div className='sighting-notes'> 
                 {
                   bird.sightings.filter(sght => sght.park_id === id)
                   .map((s, i) => (
                     <div key={i}>
-                      <span className='timestamp'>{Date(s.timestamp)}:</span><br /><span className='sighting-note-text'>{s.notes}</span></div>))
+                      <span className='timestamp'>{Date(s.timestamp)}:</span><br /><span className='sighting-note-text'> • {s.notes}</span></div>))
                 } </div>
               </div>
             ))}
+            
             </div>  {/* className='cards-grid secondary-grid' */}
           </div> {/* className='details-content' */}
-          <div className='details-gallery'>
-          <Gallery gallery={thisPark.gallery} />
-          </div>
+          
+            <div className='details-gallery'>
+            <Gallery gallery={thisPark.gallery} />
+            </div>
+          
+
         </div> {/* className='details-content-wrapper' */}
       </div> // className='details-page-wrapper'
     );

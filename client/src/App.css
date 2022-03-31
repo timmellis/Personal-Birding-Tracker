@@ -52,7 +52,7 @@ header h1 {
 .nav-drop-container {
   box-sizing: border-box;
   position: absolute;
-  top: 20%;
+  top: -100%;
   left: 0;
   margin-top: 0px;
   border-top: 0;
@@ -61,9 +61,10 @@ header h1 {
   border:solid 2px gray;
   border-top: solid thin gray;
   width:100%;
-  z-index: 0;
+  z-index: -1;
   opacity: 0;
-  transition: all .3s ease-in-out;
+
+  transition: all .2s ease-in-out;
 }
 .nav-drop:hover > .nav-drop-container {
   display: block;
@@ -84,10 +85,25 @@ header h1 {
 }
 
 .details-content-wrapper {
+  padding: 8px;
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 4fr 1fr;
   gap: 4px;
+  position: relative;
 }
+
+.bird-details-title {
+  background: gray;
+  background-image: url('resources/dejan-zakic-HxX3H32DYjA-unsplash.jpg');
+  background-size:cover;
+  background-position: center;
+}
+.bird-details-feature-img {
+  max-width:250px;
+  border: solid 2px black;
+  float:left;
+}
+
 
 .cards-grid {
   display: flex;
@@ -113,9 +129,14 @@ header h1 {
   cursor: pointer;
   transition: transform .25s ease-in-out;
 } 
+
+.secondary-grid {
+  display:block;
+  padding: 4px;
+}
 .secondary-grid .card-wrapper {
-  width:200px;
-  height: 200px;
+  width:120px;
+  max-height: 120px;
 } 
 .card-wrapper:hover {
   transform: scale(1.05);
@@ -135,12 +156,16 @@ header h1 {
 }
 
 .secondary-grid-card-block {
-  border:solid thin red;
-  width:90vw;
+  border-bottom:solid thin lightgray;
   display: flex;
   flex-direction: row;
   justify-content:start;
+
   text-align: left;
+  font-size: smaller;
+}
+.sighting-notes .timestamp {
+  font-style: italic;
 }
 
 .gallery-component {
@@ -168,21 +193,51 @@ header h1 {
   margin: 0 auto;
   padding: 8px;
   display: grid;
-  grid-template-columns: 1fr 7fr;
+  grid-template-columns: 1fr 5fr;
   gap: 10px 20px;
   justify-content: center;
   align-items:baseline center;
   
 } .update-form input[type='text'] {
   height:fit-content;
-} 
+  min-width:100%;
+  max-width:100%;
+}  .update-form textarea {
+  max-width: 100%;
+  resize: vertical;
+}
+.form-input-caption {
+  margin:0;
+  font-size:smaller;
+  font-style: italic;
+  text-align: left;
+  color: gray;
+}
 .form-gallery-line {
   display:grid;
-  grid-template-columns: 1fr 5fr 2fr;
+  grid-template-columns: 90px 6fr 2fr;
   border-top: solid thin lightgray;
   margin: 4px 0;
   padding: 6px 0;
-
+} 
+.form-gallery-line-inputs {
+  text-align: left;
+  padding-right: 4px;
+}
+.form-gallery-line input[type='text'], .form-gallery-line textarea {
+  max-width:100%;
+  resize: vertical;
+}
+.form-sighting-line-inputs {
+  text-align: left;
+  padding-left: 4px;
+  grid-column:2 / end;
+}
+.form-sighting-line-inputs input[type='text'] {
+  width: auto;
+}
+.form-sighting-line-inputs textarea {
+  max-width: 100%;
 }
 
 .form-buttons {

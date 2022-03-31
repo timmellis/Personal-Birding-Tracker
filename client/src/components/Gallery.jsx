@@ -3,13 +3,13 @@ import { DataContext } from '../DataContext'
 
 function Gallery(props) {
 
-  const [thisGallery, setThisGallery] = useState([]);
+  const [thisGallery, setThisGallery] = useState([{url: "", note: ""}]);
 
   useEffect(() => {
     setThisGallery(props.gallery);
   }, [])
 
-  if (thisGallery.length) {
+  if (thisGallery && thisGallery.length) {
     return (
       <div className='gallery-component'>
         <h4>Park Gallery</h4>
@@ -23,7 +23,8 @@ function Gallery(props) {
     );
   } else {
     return (
-      <div>Loading...</div>
+      <div className='gallery-component'>
+        Loading...</div>
     )
   }
 }
