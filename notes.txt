@@ -1,1 +1,10 @@
 ebird API key: 7uvn3tho1n22
+
+"BirdsDetails" banner img Photo by Dejan Zakic on Unsplash
+
+Thanks to Alex, Piero for eyes
+
+POST-MVPs:
+- Search? Should really try to get this.
+- Species code lookup tool OR 
+- Auto fill https://github.com/desoga10/Countrypedia

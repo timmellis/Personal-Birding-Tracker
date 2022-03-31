@@ -4,7 +4,7 @@ const { ObjectId } = require('bson')
  
 const SightingSchema = new Schema(
   {
-    timestamp: { type: Date, required: true },
+    timestamp: { type: String, required: true },
     park_id: { type: ObjectId, required: true },
     notes: { type: String, required: false, default: "" }
   },

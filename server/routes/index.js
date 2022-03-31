@@ -17,7 +17,8 @@ router.get('/parks',
     console.log(`All parks should arrive!`);
     return res.json(allparks);
   }
-)
+);
+
 // Get Park by ID (GET)
 router.get('/parks/:id', 
   async (req, res) => {
@@ -36,7 +37,8 @@ router.get('/parks/:id',
       return res.send(`parks/:id ERROR LOG: ${e.message}`)    
     }
   }
-)
+);
+
 // Create new Park (POST)
 router.post('/parks/create', 
   async (req, res) => {
@@ -49,7 +51,8 @@ router.post('/parks/create',
       return res.send({ error: e.message })
     }
   }
-)
+);
+
 // UPDATE existing Park (PUT)
 router.put('/parks/update/:id', 
   async (req, res) => {
@@ -71,26 +74,19 @@ router.put('/parks/update/:id',
   }
 );
 
+// Delete Park by ID
 router.delete('/parks/delete/:id', 
   async (req, res) => {
     try {
       const {id} = req.params;
       if (!mongoose.Types.ObjectId.isValid(id)) throw Error (`Nope, that's not a valid MongoDB ObjectId string!`);
   
-      // const thisPark = await Park.findByIdAndDelete(id, req.body);
-      // if (thisPark) return res.status(200).send("deleted");
-      // else throw Error (`Oops, failed to delete that entry.`);
-      const thisPark = await Park.findByIdAndDelete(id, function (err, resp) {
-        if (err) {
-          console.error(`ERROR in Park.findByIdAndDelete`);
-          throw Error (`Hmm... There was a problem deleting that entry.`);
-        }
-        else {
-          // console.log("Deleted: ", resp);
-          res.send(`Successfully deleted entry: ${resp}`);
-        }});
-  
-    } catch (e) {
+      const thisPark = await Park.findById(id);
+      if (!thisPark) throw Error (`Oops, that park doesn't seem to exist.`);
+      await Park.findByIdAndDelete(id);
+      res.send(`Successfully deleted entry: ${resp}`);
+    } 
+    catch (e) {
       return res.send({ error: `This message: ${e.message}` })
     }
   }  
@@ -109,6 +105,7 @@ router.get('/birds',
     res.json(allbirds);
   }
 )
+
 //Get Bird by ID (GET)
 router.get('/birds/:id', 
   async (req, res) => {
@@ -124,6 +121,20 @@ router.get('/birds/:id',
     } catch (e) {
       console.error(e);
       return res.send(`birds/:id ERROR LOG: ${e.message}`)    
+    }
+  }
+)
+
+// Create new Park (POST)
+router.post('/birds/create', 
+  async (req, res) => {
+    try {
+      const newBird = await Bird(req.body);
+      await newBird.save();
+      return res.json({ newBird });
+    } catch (e) {
+      console.error(e);
+      return res.send({ error: e.message })
     }
   }
 )
@@ -148,6 +159,24 @@ router.put('/birds/update/:id',
     }
   }
 );
+
+// Delete Park by ID
+router.delete('/birds/delete/:id', 
+  async (req, res) => {
+    try {
+      const {id} = req.params;
+      if (!mongoose.Types.ObjectId.isValid(id)) throw Error (`Nope, that's not a valid MongoDB ObjectId string!`);
+  
+      const thisBird = await Bird.findById(id);
+      if (!thisBird) throw Error (`Oops, that Bird doesn't seem to exist.`);
+      await Bird.findByIdAndDelete(id);
+      res.send(`Successfully deleted entry: ${resp}`);
+    } 
+    catch (e) {
+      return res.send({ error: `This message: ${e.message}` })
+    }
+  }  
+)
 
 
 
