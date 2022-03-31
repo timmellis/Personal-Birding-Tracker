@@ -4,6 +4,20 @@
 body {
   text-align: center;
 }
+
+.App {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:100vh;
+}
+.App-Body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+}
+
 header {
   height: min(150px, 20vh);
   background-color:skyblue;
@@ -12,6 +26,35 @@ header {
 header h1 {
   margin-top: 0;
 }
+
+
+.footer-wrapper {
+ 
+  width:100%;
+  padding: 8px;
+  max-height: 100px;
+  background: rgb(65, 125, 150);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.footer-wrapper > div {
+  width: 100%;
+  padding: 2px 10px;
+}
+.footer-left {
+  text-align: left;
+} 
+.footer-center {
+  text-align: center;
+}
+.footer-right {
+  text-align: right;
+}
+
+
+/* NAVIGATION BAR */
 .navbar {
   position: absolute;
   width: 100vw;
@@ -52,8 +95,11 @@ header h1 {
 .nav-drop-container {
   box-sizing: border-box;
   position: absolute;
-  top: -100%;
+  top: calc(100% - 10px);
   left: 0;
+  height:auto;
+  max-height: 10px;
+  overflow:hidden;
   margin-top: 0px;
   border-top: 0;
   background:rgb(170, 204, 255);
@@ -64,12 +110,12 @@ header h1 {
   z-index: -1;
   opacity: 0;
 
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 .nav-drop:hover > .nav-drop-container {
-  display: block;
-  top:100%;
+  top: 100%;
   opacity: 1;
+  max-height: 120px;
 }
 
 .page-title {
@@ -220,7 +266,7 @@ header h1 {
 .update-form {
   border: solid thin black;
   width: 80vw;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   padding: 8px;
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -267,7 +313,7 @@ header h1 {
   width: auto;
 }
 .form-sighting-line-inputs textarea {
-  max-width: 100%;
+  width: 100%;
 }
 
 .form-buttons {
@@ -280,3 +326,4 @@ header h1 {
 .delete-form-wrapper label {
   color: gray;
 }
+

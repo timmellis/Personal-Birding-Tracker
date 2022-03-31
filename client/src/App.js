@@ -8,8 +8,9 @@ import { Routes, Route, useParams, useSearchParams} from 'react-router-dom'
 import {useState, useContext, useEffect} from 'react' 
 import DataContext from './DataContext'
 
-import Nav from './components/Nav'
 import Main from './pages/Main'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 import ExploreParks from './pages/ExploreParks' 
 import ParkDetails from './pages/ParkDetails' 
 import UpdatePark from './pages/crud_pages/UpdatePark'
@@ -17,7 +18,7 @@ import CreatePark from './pages/crud_pages/CreatePark'
 import DeletePark from './pages/crud_pages/DeletePark'
 import ExploreBirds from './pages/ExploreBirds'
 import BirdDetails from './pages/BirdDetails' 
-// import UpdateBird from './pages/crud_pages/UpdateBird'
+import UpdateBird from './pages/crud_pages/UpdateBird'
 import CreateBird from './pages/crud_pages/CreateBird'
 import DeleteBird from './pages/crud_pages/DeleteBird'
 
@@ -62,6 +63,7 @@ function App() {
           <h1>Personal Birding Tracker</h1>
           <Nav />
         </header>
+        <div className='AppBody'>
 
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>
@@ -75,12 +77,17 @@ function App() {
             <Route path='/explore/birds' element={<ExploreBirds />} />
             <Route path='/explore/birds/:id' element={<BirdDetails />} />
             <Route path='/modify/birds/create/' element={<CreateBird />} />
+            <Route path='/modify/birds/update/:id' element={<UpdateBird />} />
             <Route path='/modify/birds/delete/:id' element={<DeleteBird />} />
 
           </Routes>
         </DataContext.Provider>
 
+        </div> 
 
+        <footer>
+          <Footer />
+        </footer>
         
         
         

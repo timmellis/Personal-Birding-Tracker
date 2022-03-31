@@ -4,7 +4,7 @@ import { DataContext } from '../../DataContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios, { Axios } from 'axios'
 
-const CreateBird = (props) => {
+const UpdateBird = (props) => {
 
   let {id} = useParams()
   let navigate = useNavigate();
@@ -36,6 +36,18 @@ const CreateBird = (props) => {
       "notes": " ",
     }
   );
+
+  const getThisBird = async() => {
+    const bird = await axios.get(`${apiBase}/birds/${id}`)
+    setThisBird(bird.data);
+    // console.log(thisPark);
+  }
+
+  useEffect(() => {
+    getThisBird();
+  },[id])
+
+
 
   const onChange = (e, objKey, i) => {
     // console.log(e, thisBird);
@@ -80,7 +92,7 @@ const CreateBird = (props) => {
     return {years: y, months: mos, days: d, hours: h, mins: min, secs: s} 
   }
   const timestampArrays = makeTimestampArrays(); 
-  console.log(timestampArrays);
+  // console.log(timestampArrays);
 
   const galleryAdd = (e) => {
     e.preventDefault();
@@ -98,14 +110,12 @@ const CreateBird = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const createUrl = `${apiBase}/birds/create`;
+    const updateUrl = `${apiBase}/birds/update/${id}`;
         
-    await axios.post(createUrl, thisBird)
+    await axios.put(updateUrl, thisBird)
     .then(res => {
-      const id = res.data.newBird._id;
-      refreshParksAndBirds();
-      navigate(`/explore/birds/${id}`);
+      console.log(res);
+      navigate(`/explore/birds/${id}?status=upated`);
     })
   }
 
@@ -116,7 +126,7 @@ const CreateBird = (props) => {
   if (thisBird) {
     return (
       <div>
-        <h2>Create new entry: "{thisBird.name}"</h2>
+        <h2>Update entry: "{thisBird.name}"</h2>
         
         <div className='update-form-wrapper'>
         <form className='update-form' onSubmit={(e) => onSubmit(e)}>
@@ -158,7 +168,7 @@ const CreateBird = (props) => {
               </div>
               <div className='form-sighting-line-inputs'>
                 
-                <select name='sightings' id='sighting-park_id' onChange={(e) => onChange(e, 'park_id', 0)}>
+                <select name='sightings' id='sighting-park_id' onChange={(e) => onChange(e, 'park_id', 0)} value={thisBird.sightings[0].park_id}>
                 <option name='prompt-option' selected disabled> -- select a location -- </option>
                   {parks.map((p) => (
                     <option key={p._id} value={p._id}>{p.name}</option>
@@ -183,7 +193,7 @@ const CreateBird = (props) => {
 
                   {/* <input type='datetime-local' name='sightings' id='datetimelocal' required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" /><span className='validity'></span> */}
 
-                  <input type='text' name='sightings' id='sighting-timestamp' value={thisBird.sightings.timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
+                  <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
                   <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p>
                 </div>
                 <br />
@@ -253,4 +263,4 @@ const CreateBird = (props) => {
   }
 };
   
-export default CreateBird;
+export default UpdateBird;
