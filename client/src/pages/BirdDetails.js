@@ -36,7 +36,7 @@ const BirdDetails = (props) => {
   const getThisBird = async() => {
     const bird = await axios.get(`${apiBase}/birds/${id}`)
     setThisBird(bird.data);
-    // console.log(thisPark);
+    console.log(thisBird);
   }     
 
 
@@ -44,13 +44,11 @@ const BirdDetails = (props) => {
     if (thisBird.sightings) {
     const theseParksIds = thisBird.sightings.map(sght => sght.park_id)
     let theseParks = parks.filter(p => theseParksIds.includes(p._id) )
-    console.log("THESE PARKS:", theseParksIds, theseParks);
     setThisBirdsParks(theseParks);
     } else return null;
   }
 
   function showPark(id) {
-    console.log("parkID = ", id);
     navigate(`/explore/parks/${id}`); 
   } 
 
@@ -69,8 +67,8 @@ const BirdDetails = (props) => {
               <button className='edit-details-link'><Link to={`/modify/birds/update/${id}`}> ✎ Edit details  </Link></button>
               <button className='delete-link'><Link to={`/modify/birds/delete/${id}`}> <b>✗</b> Delete </Link></button>
 
-              <p>{!thisBird.description==="" ? thisBird.description : <span className='details-message'>To add a description. click 'edit details' above.</span>}</p>
-              <p><span className='details-label'>Notes:</span><br /> {!thisBird.notes==="" ? thisBird.notes : <span className='details-message'>No notes to display.</span>}</p>
+              <p>{!thisBird.description.trim()=="" ? thisBird.description : <span className='details-message'>To add a description. click 'edit details' above.</span>}</p>
+              <p><span className='details-label'>Notes:</span><br /> {!thisBird.notes.trim()=="" ? thisBird.notes : <span className='details-message'>No notes to display.</span>}</p>
             </div>
             <h3>Sightings:</h3>
             <div className='cards-grid secondary-grid'>
