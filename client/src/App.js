@@ -11,6 +11,7 @@ import DataContext from './DataContext'
 import Main from './pages/Main'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import About from './pages/About'
 import ExploreParks from './pages/ExploreParks' 
 import ParkDetails from './pages/ParkDetails' 
 import UpdatePark from './pages/crud_pages/UpdatePark'
@@ -69,7 +70,8 @@ function App() {
         <div className='page-wrapper'>
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>
-            <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main />} />
+          <Route path='/about' element={<About />} />
             <Route path='/explore/parks' element={<ExploreParks />} />
             <Route path='/explore/parks/:id' element={<ParkDetails />} />
             <Route path='/modify/parks/create/' element={<CreatePark />} />

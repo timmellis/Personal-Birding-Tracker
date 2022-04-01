@@ -16,6 +16,8 @@ function Nav(props) {
         <div className='nav-drop-container'>
           <Link to='modify/birds/create'><div className='nav-btn nav-drop-btn'>Add a New Bird</div></Link>
           <Link to='modify/parks/create'><div className='nav-btn nav-drop-btn'>Add a New Park</div></Link>
+          <Link to='modify/birds/new-sighting'><div className='nav-btn nav-drop-btn'>Add a New Sighting</div></Link>
+
         </div>
       </div>
 

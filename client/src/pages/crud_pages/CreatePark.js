@@ -112,11 +112,8 @@ const CreatePark = (props) => {
             <label htmlFor='gallery'>Gallery Images</label>
             <button id='addOne' onClick={(e) =>galleryAdd(e)}>+ add</button>
           </div>
+         
           <div>
-
-            {/* {console.log(thisPark.gallery)} */}
-
-
           {thisPark.gallery.map((item, i) => (
             <div key={i} className='form-gallery-line'>
               <div>
@@ -137,7 +134,7 @@ const CreatePark = (props) => {
                 <input type='text' id={`gallery-img-note-${i}`} value={item.note} name='gallery' onChange={(e) => onChange(e, 'note', i)} />
               </div>
               
-              <img src={item.url} width='100px;' alt='demo thumbnail' />
+              {item.url && <img src={item.url} width='100px;' alt='demo thumbnail' /> }
             </div>
           ))}
           

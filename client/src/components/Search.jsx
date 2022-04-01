@@ -33,8 +33,8 @@ useEffect(() => {
   filterResults();
 },[searchQuery, queryDb])
 
-function showPage(id) {
-  navigate(`/explore/birds/${id}`);
+function showPage(db,id) {
+  navigate(`/explore/${db}/${id}`);
 } 
 
   return (
@@ -51,12 +51,12 @@ function showPage(id) {
           <div className='cards-grid'>
           { queryDb==='birds' &&
             queryResults.map((obj, index) => (
-            <BirdCard key={index} bird={obj} onClick={() => showPage(obj._id)} />
+            <BirdCard key={index} bird={obj} onClick={() => showPage("birds", obj._id)} />
             ))
           }
           {queryDb==='locations' &&
             queryResults.map((obj, index) => (
-              <ParkCard key={index} park={obj} onClick={() => showPage(obj._id)} />
+              <ParkCard key={index} park={obj} onClick={() => showPage("parks", obj._id)} />
               ))  
           }
           </div> 

@@ -47,7 +47,8 @@ header h1 {
   width:100%;
   padding: 8px;
   max-height: 100px;
-  background: rgb(65, 125, 150);
+  background: darkslategray;
+  color: #ccc;
 
   display: flex;
   flex-direction: row;
@@ -62,11 +63,33 @@ header h1 {
 } 
 .footer-center {
   text-align: center;
+  display:flex;
+  justify-content: center;
 }
 .footer-right {
   text-align: right;
 }
 
+.footer-wrapper .social {
+  background-image: url('resources/social-media-icons-transp_w.png');
+  background-size:500px;
+  border-radius: 40px;
+}
+.social#github {
+  height:35px;
+  width:35px;
+  background-position: -5px 105px;
+}
+.social#linkedin {
+  height:35px;
+  width:35px;
+  background-position: 105px -5px;
+}
+.social#insta {
+  height:35px;
+  width:35px;
+  background-position: 300px -5px;
+}
 
 /* NAVIGATION BAR */
 .navbar {
@@ -134,7 +157,7 @@ header h1 {
 .nav-drop:hover > .nav-drop-container {
   top: 100%;
   opacity: 1;
-  max-height: 120px;
+  max-height: 220px;
 }
 
 .page-title {
@@ -203,7 +226,9 @@ h3.break-float {
   text-align: center;
   position:relative;
   width:min(250px, 90vw);
+  max-width: 200px;
   height: min(250px, 90vw);
+  max-height: 200px;
   background-position: center;
   background-size: cover;
   color: white;
