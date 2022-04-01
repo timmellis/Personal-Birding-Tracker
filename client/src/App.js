@@ -81,7 +81,8 @@ function App() {
             <Route path='/modify/birds/create/' element={<CreateBird />} />
             <Route path='/modify/birds/update/:id' element={<UpdateBird />} />
             <Route path='/modify/birds/delete/:id' element={<DeleteBird />} />
-            <Route path='/modify/birds/newsighting/:id?' element={<NewSighting />} />
+            <Route path='/modify/birds/new-sighting/' element={<NewSighting />} />
+            <Route path='/modify/birds/new-sighting/:id' element={<NewSighting />} />
 
           </Routes>
         </DataContext.Provider>

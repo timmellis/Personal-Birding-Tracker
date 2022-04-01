@@ -70,7 +70,7 @@ const BirdDetails = (props) => {
               <p>{!thisBird.description.trim()=="" ? thisBird.description : <span className='details-message'>To add a description. click 'edit details' above.</span>}</p>
               <p><span className='details-label'>Notes:</span><br /> {!thisBird.notes.trim()=="" ? thisBird.notes : <span className='details-message'>No notes to display.</span>}</p>
             </div>
-            <h3>Sightings:</h3>
+            <h3 class='break-float'>Sightings:</h3>
             <div className='cards-grid secondary-grid'>
             {thisBirdsParks.map((park, i) => (  
               <div key={i} className='secondary-grid-card-block'>

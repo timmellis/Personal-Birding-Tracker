@@ -41,7 +41,6 @@ const ParkDetails = (props) => {
   }
 
   function showBird(id) {
-    console.log("birdID = ", id);
     navigate(`/explore/birds/${id}`); 
   } 
 
@@ -60,9 +59,12 @@ const ParkDetails = (props) => {
               <button className='delete-link'><Link to={`/modify/parks/delete/${id}`}> <b>✗</b> Delete </Link></button>
               <p>Address: {thisPark.address}</p>
               <p>{thisPark.description}</p>
+
               <p><span className='details-label'>Notes:</span><br /> {thisPark.notes}</p>
+            
             </div>
-            <h3>Sightings at this location:</h3>
+
+            <h3 className='break-float'>Sightings at this location:</h3>
             <div className='cards-grid secondary-grid'>
             {thisParksBirds.map((bird, i) => (  
               <div key={i} className='secondary-grid-card-block'>

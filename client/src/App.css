@@ -164,6 +164,10 @@ header h1 {
   gap: 4px;
   position: relative;
 }
+h3.break-float {
+  clear:both;
+  border-bottom: solid thin gray;
+}
 
 .bird-details-title {
   background: gray;

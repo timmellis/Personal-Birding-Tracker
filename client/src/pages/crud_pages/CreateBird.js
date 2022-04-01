@@ -44,13 +44,9 @@ const handleEbirdLookup = () => {
   let nameField = document.getElementById('name');
   let speciesField = document.getElementById('species_code');
 
-  console.log(ebirdCode, ebirdCode.code, "NAME:", thisBird.name, "code", thisBird.species_code)
-
-  // speciesField.value = ebirdCode.code;
-  // nameField.value = ebirdCode.name;
+  // console.log(ebirdCode, ebirdCode.code, "NAME:", thisBird.name, "code", thisBird.species_code)
 
   setThisBird({...thisBird, name: ebirdCode.name, species_code: ebirdCode.code})
-
 }
 
 

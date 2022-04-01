@@ -37,7 +37,8 @@ function NewSighting(props) {
   }
 
   useEffect(() => {
-    getThisBird();
+    id && getThisBird();
+    console.log(thisBird);
   },[id])
 
   const onChange = (e, objKey, i) => {
@@ -77,34 +78,40 @@ function NewSighting(props) {
 
 
 
-<div className='form-sighting-line-inputs'>
-                
-                <select name='sightings' id='sighting-park_id' onChange={(e) => onChange(e, 'park_id', 0)} value={thisBird.sightings[0].park_id}>
-                <option name='prompt-option' selected disabled> -- select a location -- </option>
-                  {parks.map((p) => (
-                    <option key={p._id} value={p._id}>{p.name}</option>
-                  ))}
-                </select>
+      <div className='form-sighting-line-inputs'>
+        
+        {(!id || !thisBird.name) 
+        ?
+         <h3>Report a New Sighting:</h3>
+        :
+         <h3>Report a New Sighting for: {thisBird.name}</h3>
+        }
+        <select name='sightings' id='sighting-park_id' >
+        <option name='prompt-option' selected disabled> -- select a location -- </option>
+          {parks.map((p) => (
+            <option key={p._id} value={p._id}>{p.name}</option>
+          ))}
+        </select>
 
-                <br />
-                <div>
+        <br />
+        <div>
 
-                  <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
+          <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
 
-                  {/* EXPERIMENTING */}
-                  <input type='text' disabled value={
-                    new Date(thisBird.sightings[0].timestamp).toLocaleString()
-                    } />
+          {/* EXPERIMENTING */}
+          <input type='text' disabled value={
+            new Date(thisBird.sightings[0].timestamp).toLocaleString()
+            } />
 
-                  {/* <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p> */}
-                </div>
-
-
-                <br />
-                <textarea rows='2' type='text' name='sightings' id='sighting-notes' value={thisBird.sightings[0].notes} onChange={(e) => onChange(e, 'notes', 0)}></textarea>
+          {/* <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p> */}
+        </div>
 
 
-              </div>
+        <br />
+        <textarea rows='2' type='text' name='sightings' id='sighting-notes' value={thisBird.sightings[0].notes} onChange={(e) => onChange(e, 'notes', 0)}></textarea>
+
+
+      </div>
       
     </div>
   );
