@@ -24,7 +24,7 @@ const filterResults = () => {
   if (queryDb==='birds') {
     arr = birds.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
   } else if (queryDb==='locations') {
-    arr = parks.filter(item => item.name.includes(searchQuery))
+    arr = parks.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
   }
   setQueryResults(arr);
 }
@@ -34,13 +34,12 @@ useEffect(() => {
 },[searchQuery, queryDb])
 
 function showPage(id) {
-  navigate(`${id}`);
+  navigate(`/explore/birds/${id}`);
 } 
 
   return (
     <div>
       <h3>Search by location or by bird species:</h3>
-      <h5>"{searchQuery}"</h5>
       <input value={searchQuery} name='search-query' onChange={(e) => handleChange(e)} />
       <br />
       <input type='radio' name='query-db' value='birds' defaultChecked onChange={(e) => handleChange(e)} />Birds

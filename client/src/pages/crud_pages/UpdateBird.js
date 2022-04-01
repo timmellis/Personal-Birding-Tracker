@@ -62,7 +62,7 @@ const UpdateBird = (props) => {
     else if (e.target.id === 'notes') setThisBird({...thisBird, notes: e.target.value});
     else if (e.target.name === 'sightings') {
       // console.log(e.target, objKey);
-      const newValue = e.target.value;
+      let newValue = e.target.value;
       const values = [...thisBird.sightings];
       values[i][objKey] = newValue;
       setThisBird({...thisBird, sightings: values})
@@ -194,8 +194,16 @@ const UpdateBird = (props) => {
                   {/* <input type='datetime-local' name='sightings' id='datetimelocal' required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" /><span className='validity'></span> */}
 
                   <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
-                  <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p>
+
+                  {/* EXPERIMENTING */}
+                  <input type='text' disabled value={
+                    new Date(thisBird.sightings[0].timestamp).toLocaleString()
+                    } />
+
+                  {/* <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p> */}
                 </div>
+
+
                 <br />
                 <textarea rows='2' type='text' name='sightings' id='sighting-notes' value={thisBird.sightings[0].notes} onChange={(e) => onChange(e, 'notes', 0)}></textarea>
 

@@ -9,23 +9,36 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  height:100vh;
+  min-height:100vh;
+  width:100vw;
 }
 .App-Body {
+    height:100%;
     display: flex;
+    flex: auto;
     flex-direction: column;
     justify-content: start;
-    height: 100%;
-    width:100vw;
+    background: url('https://nas-national-prod.s3.amazonaws.com/web_aud_mountain-bluebird_08695_photo-evan-barrientos.jpg');
+    background-size: cover;
 }
 
 header {
-  height: min(150px, 20vh);
+  height: min(300px, 30vh);
+  min-height:150px;
   background-color:skyblue;
+  background-image: url('resources/banner21.png');
+  background-size: cover;
+  background-position:top;
+  color:white;
   position: relative;
+  padding-right: 24px;
+  text-align: right;;
 } 
 header h1 {
-  margin-top: 0;
+  margin-top: 8px;
+  margin-right: 16px;
+  color: darkslategray;
+  text-shadow: -5px 0px 10px lightslategray;
 }
 
 
@@ -57,24 +70,28 @@ header h1 {
 
 /* NAVIGATION BAR */
 .navbar {
+  color:white;
+  background:darkslategray;
   position: absolute;
   width: 100vw;
-  bottom:5px;
+  bottom:0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   z-index:10;
 }
 .nav-btn, .nav-btn a {
+  color:white;
   display: block;
   padding: 8px;
-  background: rgba(255,255,255,.4);
+  /* background: rgba(255,255,255,.4); */
   
 }
 .nav-btn {
-  color: black;
+  /* color: black; */
   text-decoration:none;
   font-weight: 400;
+  background: darkslategray
 }
 .nav-btn:hover {
   background: rgba(122, 159, 214, 0.75);
@@ -83,7 +100,7 @@ header h1 {
 }
 .navbar > .nav-btn {
   display:inline-block;
-  border: solid thin gray;
+  /* border: solid thin gray; */
   width:100%;
   text-align: center;
   z-index: 10;
@@ -103,10 +120,11 @@ header h1 {
   overflow:hidden;
   margin-top: 0px;
   border-top: 0;
-  background:rgb(170, 204, 255);
+  background:darkslategray;
 
   border:solid 2px gray;
-  border-top: solid thin gray;
+  border-radius: 0 0 18px 18px;
+  border-top: none;
   width:100%;
   z-index: -1;
   opacity: 0;
@@ -131,10 +149,13 @@ header h1 {
   background: rgba(255,255,255,.5)
   
 }
-.details-page-wrapper {
+.page-wrapper {
   width:100%;
   max-width: 1400px;
+  height:100%;
   margin: 0 auto;
+  padding: 24px;
+  background: rgba(255,255,255,.65)
 }
 .details-content-wrapper {
   padding: 8px;
@@ -266,8 +287,7 @@ header h1 {
 
 /*  FORMS: */
 .update-form {
-  border: solid thin black;
-  width: 80vw;
+  max-width: 80vw;
   margin: 0 auto 10px auto;
   padding: 8px;
   display: grid;
@@ -305,6 +325,11 @@ header h1 {
 .form-gallery-line input[type='text'], .form-gallery-line textarea {
   max-width:100%;
   resize: vertical;
+}
+.form-gallery-line img {
+  max-width: 100%;
+  max-height: 120px;
+  border: solid thin gray;
 }
 .form-sighting-line-inputs {
   text-align: left;

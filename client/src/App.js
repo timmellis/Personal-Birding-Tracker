@@ -21,6 +21,7 @@ import BirdDetails from './pages/BirdDetails'
 import UpdateBird from './pages/crud_pages/UpdateBird'
 import CreateBird from './pages/crud_pages/CreateBird'
 import DeleteBird from './pages/crud_pages/DeleteBird'
+import NewSighting from './pages/crud_pages/NewSighting'
 
 function App() {
 
@@ -63,8 +64,9 @@ function App() {
           <h1>Personal Birding Tracker</h1>
           <Nav />
         </header>
-        <div className='App-Body'>
 
+      <div className='App-Body'>
+        <div className='page-wrapper'>
         <DataContext.Provider value={{apiBase, parks, setParks, birds, setBirds, refreshParksAndBirds}}>
           <Routes>
             <Route path='/' element={<Main />} />
@@ -79,11 +81,12 @@ function App() {
             <Route path='/modify/birds/create/' element={<CreateBird />} />
             <Route path='/modify/birds/update/:id' element={<UpdateBird />} />
             <Route path='/modify/birds/delete/:id' element={<DeleteBird />} />
+            <Route path='/modify/birds/newsighting/:id?' element={<NewSighting />} />
 
           </Routes>
         </DataContext.Provider>
-
-        </div> 
+        </div> {/* page-wrapper */}
+      </div> 
 
         <footer>
           <Footer />

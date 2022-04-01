@@ -128,7 +128,7 @@ const UpdatePark = (props) => {
                 <button onClick={(e) => galleryRemove(e)}>Delete</button>
                 }
               </div>
-              <div>
+              <div className='form-gallery-line-inputs'>
                 <label htmlFor={`gallery-img-url-${i}`}>Image URL </label>
                 
                 <input key={i} type='text' name='gallery' id={`gallery-img-url-${i}`} value={item.url} onChange={(e) => onChange(e, 'url', i)} />
@@ -140,7 +140,7 @@ const UpdatePark = (props) => {
                 <input type='text' id={`gallery-img-note-${i}`} value={item.note} name='gallery' onChange={(e) => onChange(e, 'note', i)} />
               </div>
               
-              <img src={item.url} width='100px;' alt='demo thumbnail' />
+              <img src={item.url} alt='demo thumbnail' />
             </div>
           ))}
           

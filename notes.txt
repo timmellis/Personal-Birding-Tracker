@@ -1,6 +1,10 @@
 ebird API key: 7uvn3tho1n22
 
+page banner https://www.ualberta.ca/folio/media-library/2019/11/191105-oped-wetlands-birds-banner-382324.jpg
+
 "BirdsDetails" banner img Photo by Dejan Zakic on Unsplash
+
+Background: https://nas-national-prod.s3.amazonaws.com/web_aud_mountain-bluebird_08695_photo-evan-barrientos.jpg
 
 Thanks to Alex, Piero for eyes
 

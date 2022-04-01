@@ -80,7 +80,7 @@ const BirdDetails = (props) => {
                   thisBird.sightings.filter(sght => sght.park_id === park._id)
                   .map((s, i) => (
                     <div key={i}>
-                      <span className='timestamp'>{Date(s.timestamp)}:</span><br /><span className='sighting-note-text'> • {s.notes}</span></div>))
+                      <span className='timestamp'>{new Date(s.timestamp).toLocaleString()}</span><br /><span className='sighting-note-text'> • {s.notes}</span></div>))
                 } </div>
               </div>
             ))}

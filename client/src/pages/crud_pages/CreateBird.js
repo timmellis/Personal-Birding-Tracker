@@ -183,8 +183,14 @@ const CreateBird = (props) => {
 
                   {/* <input type='datetime-local' name='sightings' id='datetimelocal' required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" /><span className='validity'></span> */}
 
-                  <input type='text' name='sightings' id='sighting-timestamp' value={thisBird.sightings.timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
-                  <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p>
+                  {/* <input type='text' name='sightings' id='sighting-timestamp' value={thisBird.sightings.timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
+                  <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p> */}
+                  <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
+
+                {/* EXPERIMENTING */}
+                <input type='text' disabled value={
+                new Date(thisBird.sightings[0].timestamp).toLocaleString()
+                } />
                 </div>
                 <br />
                 <textarea rows='2' type='text' name='sightings' id='sighting-notes' value={thisBird.sightings[0].notes} onChange={(e) => onChange(e, 'notes', 0)}></textarea>
