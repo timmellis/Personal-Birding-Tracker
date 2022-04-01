@@ -154,62 +154,15 @@ const UpdateBird = (props) => {
 
 
           <div>
-            <label htmlFor='sightings'>Add a Sighting* </label>
+            <label htmlFor='sightings'>Sightings </label>
           </div>
           <div>
-            <div className='form-gallery-line'>
-              <div> 
-                <label htmlFor='sighting-park_id'>Location* </label>
-                <br />
-                <label htmlFor='sighting-timestamp'>Timestamp* </label>
-                <br /><br />
-                <label htmlFor='sighting-notes'>Notes </label>
-
-              </div>
-              <div className='form-sighting-line-inputs'>
-                
-                <select name='sightings' id='sighting-park_id' onChange={(e) => onChange(e, 'park_id', 0)} value={thisBird.sightings[0].park_id}>
-                <option name='prompt-option' selected disabled> -- select a location -- </option>
-                  {parks.map((p) => (
-                    <option key={p._id} value={p._id}>{p.name}</option>
-                  ))}
-                </select>
-
-                <br />
-                <div>
-                  {/* <input type='text' name='sightings' id='timestamp' value={timestampString} onChange={(e) => onChange(e,'timestamp',0)} disabled />
-                  <select name='timestamp-YYYY' id='timestamp-YYYY' onChange={() => }>
-                    {timestampArrays.years.map(i => (
-                      <option key={i} value={i}>{i}</option>
-                    ))}
-                    </select>
-                    -
-                    <select name='timestamp-MM' id='timestamp-MM'>
-                    {timestampArrays.months.map(i => (
-                      <option key={i} value={i}>{i}</option>
-                    ))
-                    }
-                  </select> */}
-
-                  {/* <input type='datetime-local' name='sightings' id='datetimelocal' required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" /><span className='validity'></span> */}
-
-                  <input type='datetime-local' name='sightings' id='sighting-timestamp' value={thisBird.sightings[0].timestamp} onChange={(e) => onChange(e, 'timestamp', 0)} />
-
-                  {/* EXPERIMENTING */}
-                  <input type='text' disabled value={
-                    new Date(thisBird.sightings[0].timestamp).toLocaleString()
-                    } />
-
-                  {/* <p className='form-input-caption'>Timestamp format: "YYYY-MM-DDTHH:MM:SS"</p> */}
-                </div>
-
-
-                <br />
-                <textarea rows='2' type='text' name='sightings' id='sighting-notes' value={thisBird.sightings[0].notes} onChange={(e) => onChange(e, 'notes', 0)}></textarea>
-
-
-              </div>
-            </div>
+              <p>To add a sighting, go to "Add" → "New Sighting"</p>
+              <button onClick={(e) => {
+                e.preventDefault()
+                navigate(`/modify/birds/new-sighting/${id}`)
+              }}>
+                Add a New Sighting</button>
           </div>
 
           <div>

@@ -290,6 +290,11 @@ h3.break-float {
 
 
 /*  FORMS: */
+
+input, textarea {
+  border-radius: 4px;
+}
+
 .update-form {
   max-width: 80vw;
   margin: 0 auto 10px auto;
@@ -385,12 +390,41 @@ h3.break-float {
 
 .form-buttons {
   grid-column: 1 / span 2;
-} .form-buttons button {
+} 
+.form-buttons button {
   margin: 0 8px;
-} button[type='submit'] {
+} 
+button[type='submit'] {
   font-weight:bold;
+}
+.new-sighting-form {
+    text-align: left;
+    vertical-align: top;
 }
 .delete-form-wrapper label {
   color: gray;
 }
 
+/* NEW SIGHTINGS PAGE */
+.sightings-sidebyside {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sightings-sidebyside div {
+  flex: 50%;
+  font-size:.75rem;
+}
+.sightings-location-label {
+  margin-bottom: 0;
+}
+/* .sighting-notes {
+  display: flex;
+  justify-content: space-evenly;
+} */
+.sighting-notes .timestamp {
+  text-decoration: underline;
+} .sighting-notes .sighting-location {
+  font-weight: bold;
+  font-style: italic;
+}
