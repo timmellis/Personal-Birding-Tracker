@@ -311,6 +311,42 @@ header h1 {
   text-align: left;
   color: gray;
 }
+.form-input-split-half {
+  display: flex;
+  justify-content: space-between;
+}
+.form-input-half-width {
+  flex: 50%;
+}
+.ebird-data-filter-wrapper {
+  display: flex;
+  justify-content: space-around;
+  border: solid thin #cbcaca;
+  background: #edeced;
+  width: 95%;
+  margin: 0 0 0 auto;
+  font-size: .75rem;
+}
+.ebird-data-filter-wrapper .ebird-lookup-table {
+  max-height: 5.25rem; 
+  min-width: 75%;
+  font-size: 0.75rem; 
+  overflow-y: scroll; 
+  cursor: pointer;
+} 
+.ebird-data-filter-wrapper .ebird-data-filter-row {
+  border-top:solid thin #cbcaca;
+} 
+.ebird-data-filter-wrapper .ebird-data-filter-row:first-of-type {
+  border-top:none;
+} 
+.ebird-data-filter-wrapper .ebird-data-filter-row:hover {
+  background: #cbcaca;
+} 
+.ebird-data-filter-wrapper .ebird-data-filter-message {
+  font-style: italic;
+  color:gray;
+}
 .form-gallery-line {
   display:grid;
   grid-template-columns: 90px 6fr 2fr;

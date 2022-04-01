@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from '../../DataContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios, { Axios } from 'axios'
+import EBirdLookup from '../../components/eBirdLookup';
 
 const CreateBird = (props) => {
 
@@ -10,7 +11,7 @@ const CreateBird = (props) => {
   let navigate = useNavigate();
 
   const {apiBase, refreshParksAndBirds, parks} = useContext(DataContext);
-  
+  const [ebirdCode, setEbirdCode] = useState({name:"", code:""});
 
 
   const [timestampString, setTimestampString] = useState(
@@ -37,13 +38,38 @@ const CreateBird = (props) => {
     }
   );
 
+  
+const handleEbirdLookup = () => {
+
+  let nameField = document.getElementById('name');
+  let speciesField = document.getElementById('species_code');
+
+  console.log(ebirdCode, ebirdCode.code, "NAME:", thisBird.name, "code", thisBird.species_code)
+
+  // speciesField.value = ebirdCode.code;
+  // nameField.value = ebirdCode.name;
+
+  setThisBird({...thisBird, name: ebirdCode.name, species_code: ebirdCode.code})
+
+}
+
+
+useEffect(() => {
+  handleEbirdLookup();
+},[ebirdCode])
+
+
+
   const onChange = (e, objKey, i) => {
     // console.log(e, thisBird);
     if (e.target.id === 'name') setThisBird({...thisBird, name: e.target.value});
-    else if (e.target.id === 'species_code') setThisBird({...thisBird, species_code: e.target.value});
+    else if (e.target.id === 'species_code') {
+      setThisBird({...thisBird, species_code: e.target.value});
+      console.log(thisBird.species_code);
+    }
     else if (e.target.id === 'keywords') {
       setThisBird({...thisBird, keywords: e.target.value.split(",")});
-      console.log("Keywords = Array: ", thisBird.keywords);
+      // console.log("Keywords = Array: ", thisBird.keywords);
     }
     else if (e.target.id === 'img') setThisBird({...thisBird, img: e.target.value});
     else if (e.target.id === 'description') setThisBird({...thisBird, description: e.target.value});
@@ -80,7 +106,7 @@ const CreateBird = (props) => {
     return {years: y, months: mos, days: d, hours: h, mins: min, secs: s} 
   }
   const timestampArrays = makeTimestampArrays(); 
-  console.log(timestampArrays);
+  // console.log(timestampArrays);
 
   const galleryAdd = (e) => {
     e.preventDefault();
@@ -109,9 +135,6 @@ const CreateBird = (props) => {
     })
   }
 
-  useEffect(() => {
-    // console.log(thisBird.name);
-  },[thisBird])
 
   if (thisBird) {
     return (
@@ -124,9 +147,16 @@ const CreateBird = (props) => {
           <input type='text' id='name' name='name' placeholder='Name of bird' value={thisBird.name} onChange={(e) => onChange(e)} />
           
           <label htmlFor='species_code'>Species Code </label>
-          <div>
-            <input type='text' id='species_code' name='species_code' placeholder='eBird Species Code' value={thisBird.species_code} onChange={(e) => onChange(e)} />
-            <p className='form-input-caption'>Use the "eBird species code lookup" tool</p>
+          <div className='form-input-split-half'>
+            <div className='form-input-half-width'>
+              <input type='text' id='species_code' name='species_code' placeholder='eBird Species Code' value={thisBird.species_code} onChange={(e) => onChange(e)} disabled />
+              <p className='form-input-caption'>If known, <span onClick={() => document.getElementById('species_code').removeAttribute('disabled')} style={{fontWeight:'bold', cursor:'pointer'}}>click here</span> to enable input. Else, use the "eBird species code" lookup tool →</p>
+            </div>
+
+            <div className='form-input-half-width'>
+              <EBirdLookup query={thisBird.name} ebirdCode={ebirdCode} setEbirdCode={setEbirdCode} />
+            </div>
+
           </div>
           <label htmlFor='img'>Main image URL </label>
           <input type='text' id='img' name='img' placeholder='URL of image (not Instagram)' value={thisBird.img} onChange={(e) => onChange(e)} />
