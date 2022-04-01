@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
  
-///////// FOR LIVE DEPLOYMENT /////////////////
+/////   ↓↓ FOR LIVE DEPLOYMENT ↓↓   /////
 require('dotenv').config();
- 
 let dbUrl = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://127.0.0.1:27017/birdtrackerDatabase'
-          // WHEN TIME FOR LIVE DEPLOYMENT, REPLACE BELOW: 
-          // .connect(dbUrl)
+/////   ↑↑ FOR LIVE DEPLOYMENT ↑↑   /////
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/birdtrackerDatabase')
+  .connect(dbUrl)
   .then(() => {
-  console.log("<File: db/index.js> Boom! Connected to MongoDB!")
+  console.log("<From: db/index.js> Boom! Connected to MongoDB!")
   })
   .catch((e) => {
-    console.error('<File: db/index.js> Walk before you run... Connection error: ', e.message);
+    console.error('<From: db/index.js> Connection error: ', e.message);
   })
  
   mongoose.set('debug', true);
