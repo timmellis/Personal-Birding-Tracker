@@ -13,9 +13,11 @@
   "name": "personal-birding-tracker",
   "description": "## by Tim Ellis *General Assembly SEI - Project 2 - Full MERN Stack application*",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
