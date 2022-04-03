@@ -6,8 +6,10 @@ db.on('error', console.error.bind(console, '<seed> MongoDB connection error:'))
 
 const main = async () => {
 
-  const mtAuburnCemetery = await new Park({
-    name: "Mount Auburn Cemetery",
+  // const mtAuburnCemetery = await new Park({
+  const parks = [
+    {
+     name: "Mount Auburn Cemetery",
     location: "Cambridge, MA",
     address: "580 Mt Auburn St, Cambridge, MA 02138",
     gallery: [
@@ -17,11 +19,13 @@ const main = async () => {
     img: "http://www.matthewiphotoblog.com/wp-content/uploads/2013/05/Mary-Baker-Eddy-Memorial_final-1024x704.jpg",
     description: "Mount Auburn Cemetery is the first rural, or garden, cemetery in the United States, located on the line between Cambridge and Watertown in Middlesex County, Massachusetts, 4 miles west of Boston. A registered arboretum and well-known wildlife hotspot, it is the burial site of many prominent figures, as well as being a National Historic Landmark.",  
     notes: "Key spots: 1. Willow lake. 2. Auburn Lake. "
-  })
-  mtAuburnCemetery.save(); 
-  console.log("created Mt Auburn Cemetery");
+  },
+  // )
+  // mtAuburnCemetery.save(); 
+  // console.log("created Mt Auburn Cemetery");
 
-  const blacksNook = await new Park({
+  // const blacksNook = await new Park({
+  {
     name: "Fresh Pond Reservoir - Black's Nook",
     location: "Cambridge, MA",
     address: "Blacks Nook, Cambridge, MA 02138",
@@ -31,9 +35,13 @@ const main = async () => {
     img: "https://www.cambridgema.gov/-/media/Images/waterdepartment/freshpond/Projects/blacksnook/09bnfinished.JPG?mw=450&mh=334",
     description: "Black's Nook is a little pond set back inside Fresh Pond Reservation, where waterfowl like hooded mergansers and green herons like to stop over.",  
     notes: "Hooded mergansers: fall; Green herons: late summer. "
-  })
-  blacksNook.save(); 
-  console.log("created Blacks Nook");
+  }
+]
+  // )
+  // blacksNook.save(); 
+  // console.log("created Blacks Nook");
+  await Park.insertMany(parks)
+  console.log('Parks added');
 
 
 

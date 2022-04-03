@@ -27,9 +27,9 @@ import NewSighting from './pages/crud_pages/NewSighting'
 function App() {
 
 
-  const base = (process.env.REACT_APP_BACKEND == 'local')
+  const base = (process.env.REACT_APP_BACKEND === 'local')
     ? `http://localhost:3001/api`
-    : `https://remotesever.com/mysite` 
+    : `${window.location.origin}/api` 
 
   const [apiBase, setApiBase] = useState(base);
 
