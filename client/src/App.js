@@ -27,19 +27,21 @@ import NewSighting from './pages/crud_pages/NewSighting'
 function App() {
 
 
-  const base = (process.env.REACT_APP_BACKEND === 'local')
-    ? `http://localhost:3001/api`
-    : `${window.location.origin}/api` 
+  // const BASE_URL = (process.env.REACT_APP_BACKEND === 'local')
+  //   ? `http://localhost:3001/api`
+  //   : `${window.location.origin}/api` 
+  const BASE_URL = 'http://localhost:3001/api' || '/api';
 
-  const [apiBase, setApiBase] = useState(base);
+
+  const [apiBase, setApiBase] = useState(BASE_URL);
 
   const [parks, setParks] = useState([]);
   const [birds, setBirds] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const refreshParksAndBirds = async() => {
-    const allParks = await axios.get(`${base}/parks`)
-    const allBirds = await axios.get(`${base}/birds`)
+    const allParks = await axios.get(`${BASE_URL}/parks`)
+    const allBirds = await axios.get(`${BASE_URL}/birds`)
 //    console.log("getParks, allParks:", allParks.data);
     setParks(allParks.data);
     setBirds(allBirds.data);  
