@@ -48,9 +48,9 @@ The **Details** pages will be accesssed through the unique ObjectID for each ent
 Because each item will have an array of image urls nested within the "img" object key, the **Gallery** component will access the given entry, iterate through the array of images, and create a self-contained gallery to display all images and their captions. This gallery should work the same for both Birds and Parks entries, since the "img" array format will be the same for each.
 
 ## Post-MVP Features
-- A **Code Lookup** feature that will make use of the eBirds API (pre-downloaded) and allow the user to search the taxonomy database for the correct taxonomy code for the bird being added.
-- An **eBird details** component that will make a direct axios call to the eBird API and receive additional taxonomical details.
-- A **Login** component that will simulate a multi-user functionality, where each user would have their own unique database of bird sightings and locations visited. 
+[x] A **Code Lookup** feature that will make use of the eBirds API (pre-downloaded) and allow the user to search the taxonomy database for the correct taxonomy code for the bird being added.
+[] An **eBird details** component that will make a direct axios call to the eBird API and receive additional taxonomical details.
+[] A **Login** component that will simulate a multi-user functionality, where each user would have their own unique database of bird sightings and locations visited. 
 
 ## Technologies Used
 1. MongoDB
@@ -68,3 +68,14 @@ Because each item will have an array of image urls nested within the "img" objec
 - ERD diagrams: https://app.diagrams.net/?libs=general;er#G1AZH4cYJPncqYbh4jSPPMo555I4RMyvip
 - Component Hierarchy diagrams: https://app.diagrams.net/?libs=general;flowchart#G1ph-aA-1rjVIFyapykpZd-jIRFsqxe4m7
 - Wireframes: https://wireframe.cc/pro/pp/9b3686222533063
+
+Credit / Special Thanks:
+Images: 
+- Page banner: https://www.ualberta.ca/folio/media-library/2019/11/191105-oped-wetlands-birds-banner-382324.jpg
+
+- Background: https://nas-national-prod.s3.amazonaws.com/web_aud_mountain-bluebird_08695_photo-evan-barrientos.jpg
+
+- "BirdsDetails" title backgroud image: Photo by Dejan Zakic on Unsplash
+
+Special thanks to MANY classmates: 
+- Alex, David, Piero, DeJuan, Yusong, Austin for help with ideas, debugging, and HEROKU DEPLOYMENT OH MY GOD. 
