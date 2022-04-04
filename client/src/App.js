@@ -27,12 +27,12 @@ import NewSighting from './pages/crud_pages/NewSighting'
 function App() {
 
 
-  const BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? `${window.location.origin}/api`
-    : 'http://localhost:3001/api'
+  // const BASE_URL =
+  // process.env.NODE_ENV === 'production'
+  //   ? `${window.location.origin}/api`
+  //   : 'http://localhost:3001/api'
 
-  // const BASE_URL = 'http://localhost:3001/api' || '/api';
+  const BASE_URL = 'http://localhost:3001/api' || '/api';
 
 
   const [apiBase, setApiBase] = useState(BASE_URL);

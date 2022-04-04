@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(bodyParser.json());
 
 /////   ↓↓ FOR LIVE DEPLOYMENT ↓↓   /////
-app.use(express.static(`$__dirname}/client/build`));
+app.use(express.static(`${__dirname}/client/build`));
 /////   ↑↑ FOR LIVE DEPLOYMENT ↑↑   /////
 
 app.use('/api', routes);
