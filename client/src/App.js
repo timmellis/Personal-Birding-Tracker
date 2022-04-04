@@ -32,7 +32,7 @@ function App() {
   //   ? `${window.location.origin}/api`
   //   : 'http://localhost:3001/api'
 
-  const BASE_URL = 'http://localhost:3001/api' || '/api';
+  const BASE_URL = `/api`;
 
 
   const [apiBase, setApiBase] = useState(BASE_URL);
